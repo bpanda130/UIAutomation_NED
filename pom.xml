@@ -59,7 +59,7 @@
 			<version>${cucumber.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
 		<dependency>
 			<groupId>log4j</groupId>
@@ -90,50 +90,36 @@
 
 			<!-- ******************sequential Execution with JUnit *************************** -->
 
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-failsafe-plugin</artifactId> 
-				<version>3.0.0-M3</version> <executions> <execution> <goals> <goal>integration-test</goal> 
-				</goals> <configuration> <includes> UNCOMMENT BELOW LINE- To execute feature 
-				files with a single runner <include>**/MyTestRunners.java</include> UNCOMMENT 
-				BELOW LINE - To execute feature files with multiple runners <include>**/*Runner.java</include> 
-				</includes> UNCOMMENT BELOW 3 LINES - To execute using parallel or combination 
-				option <parallel>classes</parallel> <threadCount>4</threadCount> <perCoreThreadCount>true</perCoreThreadCount> 
-				UNCOMMENT BELOW 3 LINES - To execute using forking or combination option 
-				<forkCount>2</forkCount> <reuseForks>true</reuseForks> <reportsDirectory>${project.build.directory}/failsafe-reports_${surefire.forkNumber}</reportsDirectory> 
-				</configuration> </execution> </executions> </plugin> -->
-
-			<!-- ******************Serenity Report Execution with JUnit *************************** -->
-
-			<!-- <plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${maven.surefire.version}</version>
-				<configuration>
-					<includes>
-						<include>**/SerenityTestRunner.java</include>
-					</includes>
-					<parallel>methods</parallel>
-					<threadCount>4</threadCount>
-					<useUnlimitedThreads>false</useUnlimitedThreads>
-				</configuration>
-			</plugin> -->
-
-			<!-- <plugin>
-				<groupId>net.serenity-bdd.maven.plugins</groupId>
-				<artifactId>serenity-maven-plugin</artifactId>
-				<version>${serenity.maven.version}</version>
-				<configuration>
-					<tags>${tags}</tags>
-				</configuration>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>3.0.0-M3</version>
 				<executions>
 					<execution>
-						<id>serenity-reports</id>
-						<phase>post-integration-test</phase>
 						<goals>
-							<goal>aggregate</goal>
+							<goal>integration-test</goal>
 						</goals>
+						
+						<configuration>
+							<includes>
+								<!-- UNCOMMENT BELOW LINE- To execute feature files with a single 
+									runner -->
+								<include>**/MyTestRunners.java</include>
+							</includes>
+							<!-- UNCOMMENT BELOW 3 LINES - To execute using parallel or combination 
+								option -->
+							<parallel>classes</parallel>
+							<threadCount>4</threadCount>
+							<perCoreThreadCount>true</perCoreThreadCount>
+							<!-- UNCOMMENT BELOW 3 LINES - To execute using forking or combination 
+								option -->
+							<forkCount>2</forkCount>
+							<reuseForks>true</reuseForks>
+							<reportsDirectory>${project.build.directory}/failsafe-reports_${surefire.forkNumber}</reportsDirectory>
+						</configuration>
 					</execution>
 				</executions>
-			</plugin> -->
+			</plugin>
 		</plugins>
 	</build>
 
