@@ -41,15 +41,6 @@ public class ApplicationHooks {
 		
 	}
 	
-	@Before(order = 1)
-	public void launchBrowser() {
-		log.info("Driver Intialization for required Browser");
-		browserUtil = new BrowserUtility();
-		Browser browser = browserUtil.getBrowser(prop);
-		driverFactory = new DriverFactory();
-		driver = driverFactory.init_driver(prop, browser);
-	}
-	
 	@After(order = 0)
 	public void quitBrowser() {
 		driver.quit();

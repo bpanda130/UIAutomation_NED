@@ -1,7 +1,10 @@
 com/Factory/DriverFactory.class
 com/pages/WelcomePage.class
+com/Factory/OptionsManager.class
 com/Utility/DatabaseUtility.class
-com/Utility/ReportUtility.class
+com/Utility/Browser.class
+com/Utility/BrowserUtility.class
+com/Factory/DriverFactory$1.class
 com/Utility/ConfigReader.class
 com/Utility/WaitUtility.class
 com/Utility/ElementUtility.class
