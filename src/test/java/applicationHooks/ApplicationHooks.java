@@ -4,9 +4,9 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 
-import com.qa.Factory.DriverFactory;
-import com.qa.Utility.ConfigReader;
-import com.qa.Utility.ReportUtility;
+import com.Factory.DriverFactory;
+import com.Utility.ConfigReader;
+import com.Utility.ReportUtility;
 
 import io.cucumber.java.Before;
 

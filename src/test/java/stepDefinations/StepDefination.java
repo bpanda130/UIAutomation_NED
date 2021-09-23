@@ -3,8 +3,8 @@ package stepDefinations;
 import java.util.Arrays;
 import java.util.List;
 
+import com.Factory.DriverFactory;
 import com.pages.WelcomePage;
-import com.qa.Factory.DriverFactory;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
