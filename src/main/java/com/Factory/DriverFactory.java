@@ -1,5 +1,7 @@
 package com.Factory;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -7,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.Factory.OptionsManager;
 import com.Utility.Browser;
@@ -20,7 +23,7 @@ public class DriverFactory {
 	private static Browser browserName;
 	private OptionsManager optionsManager;
 
-	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
+	public static ThreadLocal<RemoteWebDriver> tlDriver = new ThreadLocal<>();
 
 	/**
 	 * This method is used to initialize the threadlocal driver on the basis of
@@ -28,10 +31,12 @@ public class DriverFactory {
 	 * 
 	 * @param browser
 	 * @return this will return tlDriver
+	 * @throws MalformedURLException 
 	 */
-	public WebDriver init_driver(Properties prop, Browser broserName) {
+	public RemoteWebDriver init_driver(Properties prop, Browser broserName) throws MalformedURLException {
 		highlight = prop.getProperty("highlight");
 		optionsManager = new OptionsManager(prop);
+		String remoteURL = "http://localhost:4444/wd/hub";
 
 		switch (broserName) {
 		case FIREFOX:
@@ -42,7 +47,8 @@ public class DriverFactory {
 		case CHROME:
 			WebDriverManager.chromedriver().setup();
 			//tlDriver.set(new ChromeDriver());
-			tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+			//tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+			tlDriver.set(new RemoteWebDriver(new URL(remoteURL), optionsManager.getChromeOptions()));
 			break;
 		case EDGE:
 			WebDriverManager.edgedriver().setup();
@@ -62,7 +68,7 @@ public class DriverFactory {
 	 * 
 	 * @return
 	 */
-	public static synchronized WebDriver getDriver() {
+	public static synchronized RemoteWebDriver getDriver() {
 		return tlDriver.get();
 	}
 

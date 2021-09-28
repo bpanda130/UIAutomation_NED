@@ -5,12 +5,13 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.Utility.ElementUtility;
 
 public class WelcomePage {
 	
-private WebDriver driver;
+private RemoteWebDriver driver;
 	
 	ElementUtility elementutility;
 	
@@ -33,7 +34,7 @@ private WebDriver driver;
 	private By osList = By.xpath("//fieldset[legend[text()='What is your primary Operating System:']]//label");
 	private By preferredInterface = By.id("preferred-interface");
 	
-	public WelcomePage(WebDriver driver){
+	public WelcomePage(RemoteWebDriver driver){
 		this.driver = driver;
 		elementutility = new ElementUtility(driver);
 	}
